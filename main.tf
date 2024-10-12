@@ -41,12 +41,20 @@ resource "azurerm_cosmosdb_account" "target" {
     max_staleness_prefix    = local.max_staleness_prefix
   }
 
+#  dynamic "capabilities" {
+#    for_each = var.capabilities != null ? var.capabilities : []
+#    content {
+#      name = capabilities.value.name
+#    }
+#  }
+
   dynamic "capabilities" {
     for_each = var.capabilities != null ? var.capabilities : []
     content {
-      name = capabilities.value.name
+      name = capabilities.value
     }
   }
+
 
   ip_range_filter = var.ip_range_filter
 

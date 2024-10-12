@@ -104,8 +104,14 @@ locals {
   max_staleness_prefix = var.consistency_level == "BoundedStaleness" ? var.max_staleness_prefix : null
 }
 
+#variable "capabilities" {
+#  type        = list(map(string))
+#  default     = []
+#  description = "A list of Cosmos DB capabilities to enable for this account. Possible values are AllowSelfServeUpgradeToMongo36, DisableRateLimitingResponses, EnableAggregationPipeline, EnableCassandra, EnableGremlin, EnableMongo, EnableMongo16MBDocumentSupport, EnableMongoRetryableWrites, EnableMongoRoleBasedAccessControl, EnableNoSQLVectorSearch, EnablePartialUniqueIndex, EnableServerless, EnableTable, EnableTtlOnCustomPath, EnableUniqueCompoundNestedDocs, MongoDBv3.4 and mongoEnableDocLevelTTL."
+#}
+
 variable "capabilities" {
-  type        = list(map(string))
+  type        = list(string)
   default     = []
   description = "A list of Cosmos DB capabilities to enable for this account. Possible values are AllowSelfServeUpgradeToMongo36, DisableRateLimitingResponses, EnableAggregationPipeline, EnableCassandra, EnableGremlin, EnableMongo, EnableMongo16MBDocumentSupport, EnableMongoRetryableWrites, EnableMongoRoleBasedAccessControl, EnableNoSQLVectorSearch, EnablePartialUniqueIndex, EnableServerless, EnableTable, EnableTtlOnCustomPath, EnableUniqueCompoundNestedDocs, MongoDBv3.4 and mongoEnableDocLevelTTL."
 }
